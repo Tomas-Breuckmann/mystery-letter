@@ -1,33 +1,18 @@
-let grupoEstilo = {
-    1: 'newspaper',
-    2: 'magazine1',
-    3: 'magazine2',
-};
-let grupoTamanho = {
-    1: 'medium',
-    2: 'big',
-    3: 'reallybig',
-};
-let grupoRotacao = {
-    1: 'rotateleft',
-    2: 'rotateright',
-};
-let grupoInclinacao = {
-    1: 'skewleft',
-    2: 'skewright',
-};
+let grupoEstilo = ['newspaper','magazine1','magazine2']
+let grupoTamanho = ['medium','big','reallybig']
+let grupoRotacao = ['rotateleft','rotateright']
+let grupoInclinacao =['skewleft','skewright']
 
 function selecionaEstilo(){
-    let est = Math.floor(Math.random()*1000)%3+1
-    let tam = Math.floor(Math.random()*1000)%3+1
-    let rot = Math.floor(Math.random()*1000)%2+1
-    let inc = Math.floor(Math.random()*1000)%2+1
+    let est = Math.floor(Math.random()*3)
+    let tam = Math.floor(Math.random()*3)
+    let rot = Math.floor(Math.random()*2)
+    let inc = Math.floor(Math.random()*2)
     return [est,tam,rot,inc]
 }
 
 function criaCarta(){
     let itens=document.querySelectorAll('.palavra')
-    console.log(itens)
     if (itens.length>0){
         for(let i=itens.length-1;i>=0;i-=1){
             itens[i].parentNode.removeChild(itens[i])
@@ -39,6 +24,7 @@ function criaCarta(){
         document.getElementById('carta-gerada').innerText='Por favor, digite o conteúdo da carta.'
     } else {
         let palavras=conteudo.split(' ')
+        document.getElementById('carta-contador').innerText=palavras.length
         let cartaGerada= document.getElementById('carta-gerada')
         for (let i=0 ;i<palavras.length;i+=1){
             let item=document.createElement('span')
@@ -50,8 +36,7 @@ function criaCarta(){
             item.classList.add(grupoRotacao[rot])
             item.classList.add(grupoInclinacao[inc])
             item.classList.add('palavra')
-            cartaGerada.appendChild(item)
-            
+            cartaGerada.appendChild(item)           
         }
     }
 }
