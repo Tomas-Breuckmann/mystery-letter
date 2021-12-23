@@ -12,6 +12,7 @@ function criaCarta(){
     for (let i=0 ;i<palavras.length;i+=1){
         let item=document.createElement('span')
         item.innerText=palavras[i];
+        item.style.display='inline-block'
         cartaGerada.appendChild(item)
         // console.log(palavras[i])
         
